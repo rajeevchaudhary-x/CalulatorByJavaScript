@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Style.css">
+    <title>Document</title>
+</head>
+<body id="sets">
+    <div class="container" style="background-color: #00e5ff;">
+        <h1 class="text-center">Sadhran calculator</h1>
+      
+
+        
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <form name="cont" class="t">
+                    <input type="text" name="ans" id="i" style="box-shadow: inset; background-color: white;" >
+                    
+                  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center" >
+                <input class="All" type="button" style="background-color: rgb(99 99 227); opacity: 0.5;"  value="Ac" onclick="clr()">
+                <input class="All" type="button" style="background-color: rgb(85 221 114);"  value="+" onclick="cont.ans.value+='+'">
+                <input class="All" type="button" style="background-color: rgb(169 120 187);"  value="%" onclick="cont.ans.value+='%'">
+                <input class="All" type="button" style="background-color: rgb(14, 14, 228);"  value="/" onclick="cont.ans.value+='/'">
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input class="All" id="alt" type="button" style="background-color: rgb(235, 198, 106);" value="7" onclick="cont.ans.value+='7'">
+                <input class="All" type="button" style="background-color: rgb(70, 229, 223);" value="8" onclick="cont.ans.value+='8'">
+                <input class="All" type="button" style="background-color: rgb(249, 105, 110);" value="9" onclick="cont.ans.value+='9'">
+                <input class="All" type="button" style="background-color: rgb(202, 202, 224);" value="X" onclick="cont.ans.value+='*'">
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input class="All" type="button" style="background-color: rgb(134, 243, 118);" value="4" onclick="cont.ans.value+='4'">
+                <input class="All" type="button" style="background-color: rgb(66, 197, 167);" value="5" onclick="cont.ans.value+='5'">
+                <input class="All" type="button" style="background-color: rgb(218 240 140);" value="6" onclick="cont.ans.value+='6'">
+                <input class="All" type="button" style="background-color: rgb(100 100 224);" value="-" onclick="cont.ans.value+='-'">
+            </div>
+           
+        </div>
+       
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <input class="All" type="button" value="1" onclick="cont.ans.value+='1'">
+        <input class="All" type="button" style="background-color: rgb(119, 224, 193);" value="2" onclick="cont.ans.value+='2'">
+        <input class="All" type="button" style="background-color: rgb(161, 161, 216);" value="3" onclick="cont.ans.value+='2'">
+        <input class="All" id="ret" type="button" style="background-color: rgb(100 100 224);" value="=">
+        <!-- <input class="All" id="ret" type="button" style="background-color: rgb(50, 50, 80);" value="=" onclick="eval(cint.ans.value)"> -->
+        <!-- above line not working with more than one operand -->
+        <br>
+        <input class="All" type="button" style="background-color: rgb(149, 149, 195);" value="Square" onclick="cont.ans.value+='**'">
+        <input class="All" type="button" style="background-color: rgb(65, 106, 94);" value="cube" onclick="Cub()">
+        <input class="All" type="button" style="background-color: rgb(100 100 224);" onclick="his()" value="History">
+        <input class="All" type="button" id="ooo" onclick="isPrime()" style="background-color: rgb(100 100 224);" onclick="his()" value="Ispeime?">
+            </div>
+           
+        </div>
+          
+        </form>
+
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById('ret').addEventListener('click',function(){
+        console.log(cont.ans.value);
+    })
+
+    document.getElementById("ret").addEventListener("click", function () {
+    var e = document.getElementById("i");
+    e.value = eval(e.value);
+});
+    
+function his(){
+    let arr=[];
+    let tar = document.getElementById('i').value;
+    let sa= localStorage.setItem("text",tar)
+    arr.push(sa);
+    JSON.stringify(arr);
+    console.log(arr);
+    document.getElementById('i').value=localStorage.getItem(arr);
+    
+}
+// Clear function 
+function clr(){
+    document.getElementById('i').value=" ";
+}
+
+// stop animation 
+document.getElementById("sets").addEventListener('click',function(){
+let el = document.getElementById('alt');
+// el.style.animationPlayState='paused';
+if(el.style.animationPlayState=='paused'){
+    el.style.animationPlayState='running';
+    console.log("run run");
+}
+else{
+    el.style.animationPlayState='paused';
+    console.log("prun run");
+}
+});
+
+function isPrime(){
+    let sto = "PRime number";
+    let i=1;
+    var ele = parseInt(document.getElementById('i').value);
+    console.log(ele);
+   for(i=0; i<ele; i++){
+       if(ele%i!==0){
+        document.getElementById('i').value=sto;
+       }
+   }
+   
+}
+
+function Cub(){
+    var ele = parseInt(document.getElementById('i').value);
+    let res = ele*ele*ele;
+    console.log(res);
+    document.getElementById('i').value=res;
+}
+
+</script>
