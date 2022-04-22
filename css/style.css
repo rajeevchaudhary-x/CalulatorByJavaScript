@@ -20,6 +20,7 @@
     animation-iteration-count: infinite;
     transition-delay: 0.3s;
     border-radius: 13px;
+    box-shadow: 10px 10px;
 }
 .All{
     height: 70px;
@@ -30,7 +31,8 @@
     background-color: aqua;
     color: black;
     font-size: 20px;
-  
+  transition: 0.8s;
+  box-shadow: 10px 10px;
     margin-left: 10px;
 
 }
@@ -42,8 +44,13 @@
   .overlay{
       height: 200px;
       width: 200px;
-      background-color: red;
+      background-color: rgb(238, 118, 39);
   }
   .paused {
     animation-play-state: paused;
+  }
+  .All:hover{
+      background-color: rgb(254, 192, 46) !important;
+      border: black 2px solid !important;
+      color: black !important;
   }
